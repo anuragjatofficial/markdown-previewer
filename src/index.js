@@ -9,7 +9,7 @@ renderer.link = function (href, title, text) {
 };
 
 
-const content = `# Welcome to my React Markdown Previewer!
+const content = localStorage.getItem("content") || `# Welcome to my React Markdown Previewer!
 ---
 ## This is a sub-heading...
 ### And here's some other cool stuff:
@@ -69,6 +69,7 @@ function App() {
 function Editor(props) {
   const handleChange = (event) => {
     props.text[1](event.target.value);
+    localStorage.setItem('content', props.text[0]);
   };
   return (
     <div
